@@ -1,0 +1,216 @@
+/*====================================  B A S E ===============================*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: $gray;
+  background-color: $gray;
+  font-size: 1em;
+  font-family: $font;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+input[type=file]{
+  appearance: none;
+}
+
+/*=========================== H E L P E R    C L A S S E S =======================*/
+.container--sm,
+.container--lg,
+.container--md {
+  margin: 0 auto;
+  max-width: 100%;
+}
+.container--lg {
+  width: 1200px;
+}
+
+.container--md {
+  width: 900px;
+}
+
+.container--sm {
+  width: 600px;
+}
+
+.centerXY {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centerX {
+  position: absolute;
+  left: 50%;
+  transform: translateX( -50%);
+}
+
+.centerY {
+  position: absolute;
+  top: 50%;
+  transform: translateY( -50%);
+}
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.title {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: rgba($gray, .8);
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+}
+
+.btn {
+  color: $gray;
+  padding: .5rem 1rem;
+  border-radius: .25rem;
+  cursor: pointer;
+  font-weight: $bold;
+}
+
+.btn--accent {
+  background-color: darken($pink2, 1%);
+  transition: all 300ms ease-in-out;
+  &:hover {
+    background-color: darken($pink2, 5%);
+  }
+}
+
+/*=========================== T H E M E =============================*/
+.logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  text-transform: uppercase;
+  color: $gray;
+  font-weight: $bold;
+}
+.section--header {
+  header {
+    position: relative;
+    background-image: linear-gradient(rgba($black, .7), rgba($black2, .7)), url(../img/bg.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 80vh;
+    .container {
+      @extend .centerXY;
+    }
+    .copy__text {
+      position: absolute;
+      @extend .centerX;
+      bottom: 100px;
+      width: 450px;
+      max-width: 100%;
+
+      p {
+        color: $gray;
+        opacity: .9;
+        text-align: center;
+      }
+    }
+    h1 {
+      span {
+        display: block;
+        width: 100px;
+        height: 20px;
+        @extend .centerX;
+        top: 10px;
+      }
+    }
+
+    .form {
+      padding: 50px 0 0 50px;
+    }
+    .inputfile {
+      position: absolute;
+    	z-index: -1;
+    	width: 0.1px;
+    	height: 0.1px;
+    	opacity: 0;
+    	overflow: hidden;
+
+      transition: all 300ms ease-in-out;
+
+      & + label {
+        display: inline-block;
+        padding: .5rem;
+        margin-right: 40px;
+        // font-size: 1.25em;
+        font-weight: $bold;
+        color: $gray;
+        border: 2px dashed $gray;
+        cursor: pointer;
+        border-radius: .25rem;
+      }
+
+      &:focus + label,
+      & + label:hover {
+          border-color: $pink2;
+          color: $pink2;
+      }
+    }
+
+    &::after {
+      content: "";
+      @extend .centerX;
+      bottom: -5%;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      background-color: $gray;
+    }
+  }
+}
+
+
+/*================================== MQ ============================*/
+@media only screen and (max-width: 650px) {
+  .section--header {
+    header {
+      .form {
+          padding: 50px 0 0 0;
+      }
+      .btn {
+        display: inline-block;
+        margin: 20px 0;
+      }
+      .copy__text {
+        bottom: 50px;
+        p {
+          font-size: .9rem;
+        }
+      }
+    }
+
+  }
+}
+@media only screen and (max-width: 800px) {
+  .section--header {
+    header {
+      h1 {
+        text-align: center;
+        span {
+          top: 50px;
+        }
+      }
+    }
+  }
+}
